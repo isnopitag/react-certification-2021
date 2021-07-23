@@ -29,7 +29,7 @@ export const SearchBar = () => {
     border-radius: 3px;
     font-size: 18px;
     margin: 10px;
-    
+
     padding: 5px;
     padding-left: 5 px;
     &:focus {

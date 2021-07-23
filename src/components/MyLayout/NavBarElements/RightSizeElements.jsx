@@ -12,11 +12,11 @@ export const RightSizeElements = () => {
     right: 0px;
 
     @media (max-width: 768px) {
-        flex-direction: column;
-        max-height: 300px;
-        overflow: hidden;
-        transition: max-height 0.3s ease-in;
-        width: 100%;
+      flex-direction: column;
+      max-height: 300px;
+      overflow: hidden;
+      transition: max-height 0.3s ease-in;
+      width: 100%;
     }
   `;
   return (

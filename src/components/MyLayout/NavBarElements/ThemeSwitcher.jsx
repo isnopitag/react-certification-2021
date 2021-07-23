@@ -87,7 +87,7 @@ export const ThemeSwitcher = () => {
       <ThemeSwitch>
         <Switch>
           <input type="checkbox" />
-          <span></span>
+          <span />
         </Switch>
         <h4>Dark Mode</h4>
       </ThemeSwitch>

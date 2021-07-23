@@ -6,8 +6,6 @@ import { RightSizeElements } from './NavBarElements/RightSizeElements';
 import { SearchBar } from './NavBarElements/SearchBar';
 
 export const NavBar = () => {
-
-
   const Nav = styled.div`
     padding: 0 2rem;
     display: flex;
@@ -16,12 +14,11 @@ export const NavBar = () => {
     background: ${backgroundColor};
   `;
 
-
   return (
     <Nav>
-      <Hamburger/>
-      <SearchBar/>
-      <RightSizeElements/>
+      <Hamburger />
+      <SearchBar />
+      <RightSizeElements />
     </Nav>
   );
 };
