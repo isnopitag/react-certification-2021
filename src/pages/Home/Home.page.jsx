@@ -15,12 +15,10 @@ function HomePage() {
   //   event.preventDefault();
   //   logout();
   //   history.push('/');
-  // } 
-
+  // }
 
   return (
-    
-      <YoutubeGrid />
+    <YoutubeGrid />
     // <section className="homepage" ref={sectionRef}>
     //   <h1>Hello stranger!</h1>
     //   {authenticated ? (
