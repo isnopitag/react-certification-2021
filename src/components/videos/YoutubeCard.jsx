@@ -22,7 +22,7 @@ export const YoutubeCard = ({ item }) => {
     border-radius: 5px 5px 0 0;
     width: 50%;
   `;
-  CardImage.displayName='img';
+  CardImage.displayName = 'img';
 
   const CardBody = styled.div`
     flex: 1;
@@ -31,7 +31,7 @@ export const YoutubeCard = ({ item }) => {
     fontweight: '700';
     fontsize: 16;
   `;
-  CardTitle.displayName='cardTitle';
+  CardTitle.displayName = 'cardTitle';
 
   const CardText = styled.p`
     fontweight: '800';
