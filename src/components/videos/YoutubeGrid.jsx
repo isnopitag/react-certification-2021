@@ -12,7 +12,7 @@ export const YoutubeGrid = () => {
   `;
 
   const { items } = videos;
-  console.log(items);
+  // console.log(items);
 
   return (
     <Grid>
