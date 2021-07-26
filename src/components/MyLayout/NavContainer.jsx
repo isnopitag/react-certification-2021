@@ -2,14 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavBar } from './NavBar';
 
-export const NavBarContainer = () => {
-  const Container = styled.div`
-    // background: #ffffff;
+const Container = styled.div`
     height: 20vh;
-    // z-index: 1000;
   `;
+
+export const NavBarContainer = () => {
+  
   return (
-    <Container>
+    <Container id="navbarContainer">
       <NavBar />
     </Container>
   );

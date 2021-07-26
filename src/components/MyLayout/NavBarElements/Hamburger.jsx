@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { backgroundColorText } from '../Colors';
 
-export const Hamburger = () => {
-  const HamburgerBtn = styled.div`
+const HamburgerBtn = styled.div`
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -19,9 +18,12 @@ export const Hamburger = () => {
       display: flex;
     }
   `;
+
+export const Hamburger = () => {
+  
   return (
     <>
-      <HamburgerBtn>
+      <HamburgerBtn id="hamburger-btn">
         <span />
         <span />
         <span />

@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import { backgroundColorText } from '../Colors';
 import { ReactComponent as Magnify } from '../../../assets/magnify.svg';
 
-export const SearchBar = () => {
-  const SearchWrapper = styled.div`
+const SearchWrapper = styled.div`
     background: rgba(1, 1, 1, 0.3);
     border: none;
     border-radius: 5px;
@@ -42,13 +41,16 @@ export const SearchBar = () => {
       color: grey;
     }
   `;
+
+export const SearchBar = () => {
+  
   return (
     <>
-      <SearchWrapper>
-        <Icon>
+      <SearchWrapper id="searchWrapper">
+        <Icon id="searchIcon">
           <Magnify width="24px" height="24px" stroke="white" />
         </Icon>
-        <SearchInput type="text" placeholder="Search..." />
+        <SearchInput id="searchInput" type="text" placeholder="Search..." />
       </SearchWrapper>
     </>
   );

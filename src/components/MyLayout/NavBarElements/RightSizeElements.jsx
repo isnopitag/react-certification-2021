@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { ThemeSwitcher } from './ThemeSwitcher';
 import { UserControl } from './UserControl';
 
-export const RightSizeElements = () => {
-  const Menu = styled.div`
+
+const Menu = styled.div`
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -19,11 +19,14 @@ export const RightSizeElements = () => {
       width: 100%;
     }
   `;
+
+export const RightSizeElements = () => {
+  
   return (
     <>
-      <Menu>
-        <ThemeSwitcher />
-        <UserControl />
+      <Menu id="rigthSize-elements">
+        <ThemeSwitcher id="themeSwitcher"/>
+        <UserControl id="userControl"/>
       </Menu>
     </>
   );

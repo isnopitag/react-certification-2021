@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { backgroundColorText } from '../Colors';
 
-export const ThemeSwitcher = () => {
-  const ThemeSwitch = styled.div`
+const ThemeSwitch = styled.div`
     color: #ffffff;
     cursor: pointer;
     display: grid;
@@ -82,10 +81,12 @@ export const ThemeSwitcher = () => {
     }
   `;
 
+export const ThemeSwitcher = () => {
+  
   return (
     <>
-      <ThemeSwitch>
-        <Switch>
+      <ThemeSwitch id="themeSwithc">
+        <Switch id="swithc">
           <input type="checkbox" />
           <span />
         </Switch>

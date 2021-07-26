@@ -5,8 +5,7 @@ import { Hamburger } from './NavBarElements/Hamburger';
 import { RightSizeElements } from './NavBarElements/RightSizeElements';
 import { SearchBar } from './NavBarElements/SearchBar';
 
-export const NavBar = () => {
-  const Nav = styled.div`
+const Nav = styled.div`
     padding: 0 2rem;
     display: flex;
     align-items: center;
@@ -14,8 +13,11 @@ export const NavBar = () => {
     background: ${backgroundColor};
   `;
 
+export const NavBar = () => {
+  
+
   return (
-    <Nav>
+    <Nav id="navbar">
       <Hamburger />
       <SearchBar />
       <RightSizeElements />
