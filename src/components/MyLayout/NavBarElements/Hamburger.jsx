@@ -14,8 +14,8 @@ const HamburgerBtn = styled.div`
       margin-bottom: 4px;
       width: 25px;
     }
-    @media (max-width: 100px) {
-      display: flex;
+    @media (max-width: 410px) {
+      display: none;
     }
   `;
 
