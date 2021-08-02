@@ -2,11 +2,13 @@
 import React from 'react';
 // import { Link, useHistory } from 'react-router-dom';
 import { YoutubeGrid } from '../../components/videos/YoutubeGrid';
-
+import PropTypes from "prop-types";
 // import { useAuth } from '../../providers/Auth';
 import './Home.styles.css';
 
-function HomePage() {
+function HomePage({ search, view, setView }) {
+
+  
   // const history = useHistory();
   // const sectionRef = useRef(null);
   // const { authenticated, logout } = useAuth();
@@ -18,7 +20,7 @@ function HomePage() {
   // }
 
   return (
-    <YoutubeGrid />
+    <YoutubeGrid  search={search} view={view} setView={setView}/>
     // <section className="homepage" ref={sectionRef}>
     //   <h1>Hello stranger!</h1>
     //   {authenticated ? (
@@ -38,5 +40,9 @@ function HomePage() {
     // </section>
   );
 }
+
+HomePage.propTypes = {
+  search: PropTypes.string.isRequired,
+};
 
 export default HomePage;

@@ -4,6 +4,7 @@ import { backgroundColor } from './Colors';
 import { Hamburger } from './NavBarElements/Hamburger';
 import { RightSizeElements } from './NavBarElements/RightSizeElements';
 import { SearchBar } from './NavBarElements/SearchBar';
+import PropTypes from "prop-types";
 
 const Nav = styled.div`
     padding: 0 2rem;
@@ -13,14 +14,20 @@ const Nav = styled.div`
     background: ${backgroundColor};
   `;
 
-export const NavBar = () => {
+export const NavBar = ({setSearch, setView}) => {
   
 
   return (
     <Nav id="navbar">
       <Hamburger />
-      <SearchBar />
+      <SearchBar setSearch={setSearch
+      } setView={setView}/>
       <RightSizeElements />
     </Nav>
   );
+};
+
+NavBar.propTypes = {
+  setSearch: PropTypes.func.isRequired,
+  setView: PropTypes.func.isRequired,
 };

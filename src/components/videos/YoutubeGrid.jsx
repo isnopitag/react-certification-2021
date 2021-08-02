@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { videos } from '../../data/youtubeVideos';
+import { useFetchYoutbeVideos } from '../../hooks/useFetchYoutubeVideos';
 import { YoutubeCard } from './YoutubeCard';
+import { YoutubeDetails } from './YoutubeDetails';
+import PropTypes from 'prop-types';
 
 const Grid = styled.div`
   display: grid;
@@ -16,15 +18,31 @@ const Grid = styled.div`
   }
 `;
 
-export const YoutubeGrid = () => {
-  const { items } = videos;
+export const YoutubeGrid = ({ search, view, setView }) => {
+  
+  const [item, setItem] = useState({})
 
-  return (
-    <Grid id="youtube-grid">
-      {items.map((item) => {
-        const { etag, snippet } = item;
-        return <YoutubeCard key={etag} item={snippet} />;
-      })}
-    </Grid>
-  );
+  const { data: items, loading } = useFetchYoutbeVideos(search);
+
+  if(!view){
+    return (
+      
+      <Grid id="youtube-grid">
+        {loading && "LOADING..."}
+        {items.map((itemVideo) => {
+          const { etag, snippet, id } = itemVideo;
+          return <YoutubeCard key={etag} id={id} item={snippet} setView={setView} setItem={setItem}/>;
+        })}
+      </Grid>
+      );
+  }else{
+    return (<YoutubeDetails id={item.id.videoId} item={item.item} setView={setView} setItem={setItem}/>);
+  }
+  
+};
+
+YoutubeGrid.propTypes = {
+  search: PropTypes.string.isRequired,
+  view: PropTypes.bool.isRequired,
+  setView: PropTypes.func.isRequired,
 };

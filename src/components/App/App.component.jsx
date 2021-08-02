@@ -1,5 +1,5 @@
 // import React, { useLayoutEffect } from 'react';
-import React from 'react';
+import React, {useState} from 'react';
 // import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -33,11 +33,14 @@ function App() {
   //   };
   // }, []);
 
+  const [search, setSearch] = useState('Wizeline');
+  const [view, setView] = useState(false)
+
   return (
     <BrowserRouter>
       <AuthProvider>
-        <NavBarContainer />
-        <HomePage />
+        <NavBarContainer setSearch={setSearch} setView={setView}/>
+        <HomePage  search={search} view={view} setView={setView}/>
         {/* <Layout>
           <Switch>
             <Route exact path="/">
