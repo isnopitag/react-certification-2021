@@ -4,16 +4,15 @@ import { ReactComponent as AccountCircle } from '../../../assets/account-circle.
 import { backgroundColorText } from '../Colors';
 
 const Account = styled.div`
-    cursor: pointer;
-    display: flex;
-    fill: ${backgroundColorText};
-    left: 50%;
-    padding: 1rem 2rem;
-    top: 50%;
-  `;
-  
+  cursor: pointer;
+  display: flex;
+  fill: ${backgroundColorText};
+  left: 50%;
+  padding: 1rem 2rem;
+  top: 50%;
+`;
+
 export const UserControl = () => {
-  
   return (
     <>
       <Account id="AccountComponent">

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { backgroundColorText } from '../Colors';
 import { ReactComponent as Magnify } from '../../../assets/magnify.svg';
-import PropTypes from 'prop-types';
 
 const SearchWrapper = styled.form`
   background: rgba(1, 1, 1, 0.3);
@@ -66,7 +66,13 @@ export const SearchBar = ({ setSearch, setView }) => {
         <Icon id="searchIcon">
           <Magnify width="24px" height="24px" stroke="white" />
         </Icon>
-        <SearchInput id="searchInput" type="text" placeholder="Search..."  value={inputValue} onChange={handeInputChange} />
+        <SearchInput
+          id="searchInput"
+          type="text"
+          placeholder="Search..."
+          value={inputValue}
+          onChange={handeInputChange}
+        />
       </SearchWrapper>
     </>
   );

@@ -45,12 +45,11 @@ export const YoutubeCard = ({ item, id, setView, setItem }) => {
   const { title, description, thumbnails } = item;
 
   const handleClick = () => {
-      setView(true);
-      setItem({
-        id: id,
-        item: item,
-      });
-    
+    setView(true);
+    setItem({
+      id,
+      item,
+    });
   };
 
   return (

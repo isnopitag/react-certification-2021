@@ -29,14 +29,14 @@ export const YoutubeVideoPlayer = ({ id, item }) => {
     <Wrapper>
       <Box2>
         <iframe
-            title={title}
+          title={title}
           id="player"
           type="text/html"
           width="640"
           height="360"
           src={url}
           frameBorder="0"
-        ></iframe>
+        />
       </Box2>
       <Box3>
         <h3>{title}</h3>
@@ -46,6 +46,6 @@ export const YoutubeVideoPlayer = ({ id, item }) => {
   );
 };
 YoutubeVideoPlayer.propTypes = {
-    id: PropTypes.string.isRequired,
-    item: PropTypes.objectOf(PropTypes.object()).isRequired
-  };
+  id: PropTypes.string.isRequired,
+  item: PropTypes.objectOf(PropTypes.object()).isRequired,
+};

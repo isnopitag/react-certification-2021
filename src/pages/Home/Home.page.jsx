@@ -1,14 +1,12 @@
 // import React, { useRef } from 'react';
 import React from 'react';
 // import { Link, useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { YoutubeGrid } from '../../components/videos/YoutubeGrid';
-import PropTypes from "prop-types";
 // import { useAuth } from '../../providers/Auth';
 import './Home.styles.css';
 
 function HomePage({ search, view, setView }) {
-
-  
   // const history = useHistory();
   // const sectionRef = useRef(null);
   // const { authenticated, logout } = useAuth();
@@ -20,7 +18,7 @@ function HomePage({ search, view, setView }) {
   // }
 
   return (
-    <YoutubeGrid  search={search} view={view} setView={setView}/>
+    <YoutubeGrid search={search} view={view} setView={setView} />
     // <section className="homepage" ref={sectionRef}>
     //   <h1>Hello stranger!</h1>
     //   {authenticated ? (
