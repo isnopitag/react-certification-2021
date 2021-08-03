@@ -21,7 +21,7 @@ const Box3 = styled.div`
 `;
 
 export const YoutubeVideoPlayer = ({ id, item }) => {
-  const url = `http://www.youtube.com/embed/${id}?enablejsapi=1&origin=http://example.com`;
+  const url = `https://www.youtube.com/embed/${id}?enablejsapi=1&origin=http://example.com`;
 
   const { title, description } = item;
 
