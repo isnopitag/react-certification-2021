@@ -42,7 +42,7 @@ export const YoutubeDetails = ({ id, item, setView, setItem }) => {
       <Wrapper>
         {loading && 'LOADING...'}
         <Box1>
-          <ReturnBtn onClick={handleClick} type="button">
+          <ReturnBtn onClick={handleClick} type="button" data-testid="button">
             <span>Return to main</span>
           </ReturnBtn>
         </Box1>
@@ -70,7 +70,7 @@ export const YoutubeDetails = ({ id, item, setView, setItem }) => {
 
 YoutubeDetails.propTypes = {
   id: PropTypes.string.isRequired,
-  item: PropTypes.objectOf(PropTypes.object()).isRequired,
+  item: PropTypes.object.isRequired,
   setView: PropTypes.func.isRequired,
   setItem: PropTypes.func.isRequired,
 };

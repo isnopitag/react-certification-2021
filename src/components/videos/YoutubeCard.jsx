@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 const Card = styled.div`
   border-radius: 5px;
@@ -63,9 +62,9 @@ export const YoutubeCard = ({ item, id, setView, setItem }) => {
   );
 };
 
-YoutubeCard.propTypes = {
-  id: PropTypes.objectOf(PropTypes.object()).isRequired,
-  item: PropTypes.objectOf(PropTypes.object()).isRequired,
-  setView: PropTypes.func.isRequired,
-  setItem: PropTypes.func.isRequired,
-};
+// YoutubeCard.propTypes = {
+//   id: PropTypes.object.isRequired,
+//   item: PropTypes.object.isRequired,
+//   setView: PropTypes.func.isRequired,
+//   setItem: PropTypes.func.isRequired,
+// };
