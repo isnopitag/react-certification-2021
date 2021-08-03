@@ -50,7 +50,6 @@ export const YoutubeCard = ({ item, id, setView, setItem }) => {
       item,
     });
   };
-
   return (
     <Card id="card" onClick={handleClick}>
       <CardImage id="cardImage" src={thumbnails.medium.url} />

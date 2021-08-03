@@ -52,7 +52,6 @@ export const SearchBar = ({ setSearch, setView }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Handle Submit', inputValue);
     if (inputValue.trim().length > 2) {
       setSearch(inputValue);
       setInputValue('');

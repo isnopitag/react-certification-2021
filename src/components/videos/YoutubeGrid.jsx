@@ -43,9 +43,10 @@ export const YoutubeGrid = ({ search, view, setView }) => {
       </Grid>
     );
   }
+  
   return (
     <YoutubeDetails
-      data-testid="YoutubeDetails"
+    data-testid="YoutubeDetails"
       id={item.id.videoId}
       item={item.item}
       setView={setView}
