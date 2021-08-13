@@ -66,6 +66,7 @@ export const SearchBar = ({ setSearch, setView }) => {
           <Magnify width="24px" height="24px" stroke="white" />
         </Icon>
         <SearchInput
+          data-testid="searchInput"
           id="searchInput"
           type="text"
           placeholder="Search..."

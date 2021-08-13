@@ -25,7 +25,7 @@ export const YoutubeGrid = ({ search, view, setView }) => {
 
   if (!view) {
     return (
-      <Grid id="youtube-grid">
+      <Grid id="youtube-grid" data-testid="YoutubeGrid">
         {loading && 'LOADING...'}
         {items.map((itemVideo) => {
           const { etag, snippet, id } = itemVideo;

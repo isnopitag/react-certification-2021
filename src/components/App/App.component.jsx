@@ -14,7 +14,7 @@ import HomePage from '../../pages/Home';
 // import { random } from '../../utils/fns';
 import { NavBarContainer } from '../MyLayout/NavContainer';
 
-function App() {
+export function App() {
   // useLayoutEffect(() => {
   //   const { body } = document;
 
@@ -39,8 +39,8 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <NavBarContainer setSearch={setSearch} setView={setView} />
-        <HomePage search={search} view={view} setView={setView} />
+        <NavBarContainer data-testid="navbar" setSearch={setSearch} setView={setView} />
+        <HomePage data-testid="homePage" search={search} view={view} setView={setView} />
         {/* <Layout>
           <Switch>
             <Route exact path="/">
