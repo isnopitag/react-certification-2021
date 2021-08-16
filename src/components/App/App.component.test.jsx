@@ -1,43 +1,38 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { App } from './App.component';
-import "@testing-library/jest-dom/extend-expect"
+import '@testing-library/jest-dom/extend-expect';
 
-test("Set something into the search input ", () => {
-    
-    const { getByTestId } = render (<App/>);
-    const searchBarEl = getByTestId("searchInput");
-    
-    fireEvent.change(searchBarEl, {
-        target: {
-            value: 'Leyendas legendarias'
-        }
-    })
-    
-    expect(searchBarEl.value).toBe('Leyendas legendarias');
+test('Set something into the search input ', () => {
+  const { getByTestId } = render(<App />);
+  const searchBarEl = getByTestId('searchInput');
 
-})
+  fireEvent.change(searchBarEl, {
+    target: {
+      value: 'Leyendas legendarias',
+    },
+  });
 
-test("Make a search and render something ", async () => {
-    
-    const { getByTestId } = render (<App/>);
-    const searchBarEl = getByTestId("searchInput");
-    
-    fireEvent.change(searchBarEl, {
-        target: {
-            value: 'Leyendas legendarias'
-        }
-    })
+  expect(searchBarEl.value).toBe('Leyendas legendarias');
+});
 
-    fireEvent.submit(searchBarEl)
+test('Make a search and render something ', async () => {
+  const { getByTestId } = render(<App />);
+  const searchBarEl = getByTestId('searchInput');
 
-    const gridEl = await getByTestId("YoutubeGrid");
+  fireEvent.change(searchBarEl, {
+    target: {
+      value: 'Leyendas legendarias',
+    },
+  });
 
-    console.log(gridEl);
+  fireEvent.submit(searchBarEl);
 
-    // const nameWrapper =  await findByTestId('YoutubeGrid');
+  const gridEl = await getByTestId('YoutubeGrid');
 
-    
-    // expect(searchBarEl.value).toBe('Leyendas legendarias');
+  console.log(gridEl);
 
-})
+  // const nameWrapper =  await findByTestId('YoutubeGrid');
+
+  // expect(searchBarEl.value).toBe('Leyendas legendarias');
+});

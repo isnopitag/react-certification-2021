@@ -16,11 +16,7 @@ function HomePage() {
   //   history.push('/');
   // }
 
-  return (
-    <YoutubeGrid 
-     />
-  );
+  return <YoutubeGrid />;
 }
-
 
 export default HomePage;

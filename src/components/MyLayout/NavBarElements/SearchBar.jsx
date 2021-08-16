@@ -1,4 +1,4 @@
-import React, { useState,  useContext  } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as Magnify } from '../../../assets/magnify.svg';
 import { AppContext } from '../../../context/context';
@@ -13,7 +13,7 @@ const SearchWrapper = styled.form`
   margin: 5px;
 `;
 const Icon = styled.div`
-  fill:  white;
+  fill: white;
   flex: 0 0;
   height: 24px;
   left: 50%;
@@ -28,14 +28,14 @@ const SearchInput = styled.input`
   border-radius: 3px;
   font-size: 18px;
   margin: 10px;
- 
+
   padding: 5px;
   padding-left: 5 px;
   &:focus {
     outline: none;
   }
   &:hover {
-    color:  ${(props) => props.theme.text};
+    color: ${(props) => props.theme.text};
   }
   ::placeholder {
     color: ${(props) => props.theme.invertedTextColor};
@@ -43,7 +43,6 @@ const SearchInput = styled.input`
 `;
 
 export const SearchBar = () => {
-  
   const { dispatch } = useContext(AppContext);
   const [inputValue, setInputValue] = useState('');
 
@@ -56,8 +55,8 @@ export const SearchBar = () => {
     if (inputValue.trim().length > 2) {
       dispatch({
         type: 'setSearch',
-        value: inputValue
-      })
+        value: inputValue,
+      });
       setInputValue('');
     }
   };

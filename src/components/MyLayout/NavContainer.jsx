@@ -9,7 +9,7 @@ const Container = styled.div`
 export const NavBarContainer = () => {
   return (
     <Container id="navbarContainer">
-      <NavBar/>
+      <NavBar />
     </Container>
   );
 };

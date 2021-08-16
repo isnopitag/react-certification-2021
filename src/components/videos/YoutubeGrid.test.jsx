@@ -10,4 +10,3 @@ test('Renders Loading text before fetching data', () => {
   const loading = screen.getByText(/LOADING/i);
   expect(loading).toBeInTheDocument();
 });
-

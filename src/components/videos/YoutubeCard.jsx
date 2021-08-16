@@ -45,12 +45,7 @@ color: ${(props) => props.theme.textColor};
 }
 `;
 
-export const YoutubeCard = ({
-  item,
-  id,
-  loading,
-  setItem,
-}) => {
+export const YoutubeCard = ({ item, id, loading, setItem }) => {
   const { title, description, thumbnails } = item;
   const { dispatch } = useContext(AppContext);
 

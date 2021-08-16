@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { YoutubeCard } from './YoutubeCard';
@@ -33,18 +33,15 @@ const ReturnBtn = styled.button`
   cursor: pointer;
 `;
 
-export const YoutubeDetails = (
-  { id, item, 
-     setItem }
-  ) => {
-    const { dispatch } = useContext(AppContext);
+export const YoutubeDetails = ({ id, item, setItem }) => {
+  const { dispatch } = useContext(AppContext);
   const { data: items, loading } = useFetchYoutbeRelatedVideos(id);
 
   const handleClick = () => {
     dispatch({
       type: 'setView',
-      value: false
-    })
+      value: false,
+    });
   };
   return (
     <>
@@ -60,7 +57,7 @@ export const YoutubeDetails = (
         </div>
         <div>
           {items.map((itemVideo) => {
-            const { etag, snippet, id:idVideo } = itemVideo;
+            const { etag, snippet, id: idVideo } = itemVideo;
             return (
               <YoutubeCard
                 key={etag}

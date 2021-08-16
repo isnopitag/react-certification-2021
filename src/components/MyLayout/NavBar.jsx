@@ -9,7 +9,7 @@ const Nav = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  background:  ${(props) => props.theme.navColor};
+  background: ${(props) => props.theme.navColor};
 `;
 
 export const NavBar = () => {
