@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { App } from './App.component.jsx';
+import { App } from './App.component';
 import "@testing-library/jest-dom/extend-expect"
 
 test("Set something into the search input ", () => {
