@@ -47,5 +47,4 @@ export const YoutubeVideoPlayer = ({ id, item }) => {
 };
 YoutubeVideoPlayer.propTypes = {
   id: PropTypes.string.isRequired,
-  item: PropTypes.object.isRequired,
 };

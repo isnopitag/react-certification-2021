@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import { backgroundColor } from './Colors';
 import { Hamburger } from './NavBarElements/Hamburger';
 import { RightSizeElements } from './NavBarElements/RightSizeElements';
 import { SearchBar } from './NavBarElements/SearchBar';
@@ -11,20 +9,15 @@ const Nav = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  background: ${backgroundColor};
+  background: ${(props) => props.theme.navColor};
 `;
 
-export const NavBar = ({ setSearch, setView }) => {
+export const NavBar = () => {
   return (
     <Nav id="navbar">
       <Hamburger />
-      <SearchBar setSearch={setSearch} setView={setView} />
+      <SearchBar />
       <RightSizeElements />
     </Nav>
   );
-};
-
-NavBar.propTypes = {
-  setSearch: PropTypes.func.isRequired,
-  setView: PropTypes.func.isRequired,
 };

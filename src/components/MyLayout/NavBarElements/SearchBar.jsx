@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import { backgroundColorText } from '../Colors';
 import { ReactComponent as Magnify } from '../../../assets/magnify.svg';
+import { AppContext } from '../../../context/context';
 
 const SearchWrapper = styled.form`
-  background: rgba(1, 1, 1, 0.3);
+  background: ${(props) => props.theme.backgroundColorAlfa};
   border: none;
   border-radius: 5px;
   display: grid;
@@ -14,7 +13,7 @@ const SearchWrapper = styled.form`
   margin: 5px;
 `;
 const Icon = styled.div`
-  fill: ${backgroundColorText};
+  fill: white;
   flex: 0 0;
   height: 24px;
   left: 50%;
@@ -36,14 +35,15 @@ const SearchInput = styled.input`
     outline: none;
   }
   &:hover {
-    color: ${backgroundColorText};
+    color: ${(props) => props.theme.text};
   }
   ::placeholder {
-    color: grey;
+    color: ${(props) => props.theme.invertedTextColor};
   }
 `;
 
-export const SearchBar = ({ setSearch, setView }) => {
+export const SearchBar = () => {
+  const { dispatch } = useContext(AppContext);
   const [inputValue, setInputValue] = useState('');
 
   const handeInputChange = (e) => {
@@ -53,15 +53,17 @@ export const SearchBar = ({ setSearch, setView }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (inputValue.trim().length > 2) {
-      setSearch(inputValue);
+      dispatch({
+        type: 'setSearch',
+        value: inputValue,
+      });
       setInputValue('');
-      setView(false);
     }
   };
 
   return (
     <>
-      <SearchWrapper id="searchWrapper" onSubmit={handleSubmit}>
+      <SearchWrapper  data-testid="searchWrapper" id="searchWrapper" onSubmit={handleSubmit}>
         <Icon id="searchIcon">
           <Magnify width="24px" height="24px" stroke="white" />
         </Icon>
@@ -76,9 +78,4 @@ export const SearchBar = ({ setSearch, setView }) => {
       </SearchWrapper>
     </>
   );
-};
-
-SearchBar.propTypes = {
-  setSearch: PropTypes.func.isRequired,
-  setView: PropTypes.func.isRequired,
 };
