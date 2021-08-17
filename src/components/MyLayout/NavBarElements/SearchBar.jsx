@@ -63,7 +63,7 @@ export const SearchBar = () => {
 
   return (
     <>
-      <SearchWrapper id="searchWrapper" onSubmit={handleSubmit}>
+      <SearchWrapper  data-testid="searchWrapper" id="searchWrapper" onSubmit={handleSubmit}>
         <Icon id="searchIcon">
           <Magnify width="24px" height="24px" stroke="white" />
         </Icon>

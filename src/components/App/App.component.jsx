@@ -34,8 +34,8 @@ export function App() {
         <ThemeProvider id="themeProvier" theme={currentTheme}>
           <AppContext.Provider value={{ ...state, dispatch }}>
             <GlobalStyles id="globalStyles" />
-            <NavBarContainer data-testid="navbar" />
-            <HomePage data-testid="homePage" />
+            <NavBarContainer data-testid="navbar"/>
+            <HomePage data-testid="homePage"/>
           </AppContext.Provider>
         </ThemeProvider>
       </AuthProvider>
