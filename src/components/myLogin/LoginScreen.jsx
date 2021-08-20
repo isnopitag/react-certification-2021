@@ -1,21 +1,17 @@
-import React from 'react'
+import React from 'react';
 
-export const LoginScreen = ({history}) => {
-    const handleLogin = () => {
-        history.replace('/');
-    }
+export const LoginScreen = ({ history }) => {
+  const handleLogin = () => {
+    history.replace('/');
+  };
 
-    return (
-        <div className="className container mt-5">
-            <h1>Login</h1>
-            <hr />
-            <button  
-                className="btn btn-primary"
-                onClick={handleLogin}
-                type="button"
-             >
-                 Login
-             </button>
-        </div>
-    )
-}
+  return (
+    <div className="className container mt-5">
+      <h1>Login</h1>
+      <hr />
+      <button className="btn btn-primary" onClick={handleLogin} type="button">
+        Login
+      </button>
+    </div>
+  );
+};

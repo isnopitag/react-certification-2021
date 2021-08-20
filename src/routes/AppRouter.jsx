@@ -6,9 +6,9 @@ export const AppRouter = () => {
   return (
     <Router>
       <div>
-          <Switch>
-              <Route exact path="/login" component={LoginScreen}/>
-          </Switch>
+        <Switch>
+          <Route exact path="/login" component={LoginScreen} />
+        </Switch>
       </div>
     </Router>
   );
