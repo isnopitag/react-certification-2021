@@ -57,6 +57,7 @@ export const YoutubeDetails = ({ id, item, setItem }) => {
         </div>
         <div>
           {items.map((itemVideo) => {
+            console.log(itemVideo)
             const { etag, snippet, id: idVideo } = itemVideo;
             return (
               <YoutubeCard
