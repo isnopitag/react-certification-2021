@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { AppContext } from '../../context/context';
 
 const Card = styled.div`
+  background: ${(props) => props.theme.cardBackground};
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   min-height: 80px;
+  max-width: 500px;
   margin: 0.25em 0.5em;
   overflow: hidden;
   padding: 2px 16px;
@@ -25,12 +28,14 @@ const CardBody = styled.div`
   flex: 1;
 `;
 const CardTitle = styled.p`
+  color: ${(props) => props.theme.textColor};
   fontweight: '700';
   fontsize: 16;
 `;
 CardTitle.displayName = 'cardTitle';
 
 const CardText = styled.p`
+color: ${(props) => props.theme.textColor};
   fontweight: '800';
   overflow: hidden;
    text-overflow: ellipsis;
@@ -40,15 +45,21 @@ const CardText = styled.p`
 }
 `;
 
-export const YoutubeCard = ({ item, id, setView, setItem }) => {
+export const YoutubeCard = ({ item, id, loading, setItem }) => {
   const { title, description, thumbnails } = item;
+  const { dispatch } = useContext(AppContext);
 
   const handleClick = () => {
-    setView(true);
-    setItem({
-      id,
-      item,
-    });
+    if (!loading) {
+      dispatch({
+        type: 'setView',
+        value: true,
+      });
+      setItem({
+        id,
+        item,
+      });
+    }
   };
   return (
     <Card id="card" onClick={handleClick}>

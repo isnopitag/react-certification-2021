@@ -1,11 +1,11 @@
 import React from 'react'
-import { Redirect, Route, Switch } from 'react-router-dom'
+// import { Redirect, Route, Switch } from 'react-router-dom'
 
 export const VideoRoutes = () => {
     return (
         <>
             
-            <div className="container mt-2">
+            {/* <div className="container mt-2">
                 <Switch>
                     <Route exact path="/marvel" component={ MarvelScreen }/>
                     <Route exact path="/hero/:heroeId" component={ HeroScreen }/>
@@ -14,7 +14,7 @@ export const VideoRoutes = () => {
 
                     <Redirect to="/marvel"/>
                 </Switch>
-            </div>  
+            </div>   */}
         </>
     )
 }

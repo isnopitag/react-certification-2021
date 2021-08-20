@@ -12,6 +12,7 @@ export const LoginScreen = ({history}) => {
             <button  
                 className="btn btn-primary"
                 onClick={handleLogin}
+                type="button"
              >
                  Login
              </button>

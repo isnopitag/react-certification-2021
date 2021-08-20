@@ -8,6 +8,7 @@ export const useFetchYoutbeRelatedVideos = (id) => {
   });
   useEffect(() => {
     getYoutubeRealatedVideos(id).then((res) => {
+      console.log('RES', res.data);
       setState({
         data: res.data.items,
         loading: false,
