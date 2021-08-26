@@ -13,6 +13,7 @@ const light = {
   invertedBackgroundColor: '#303030',
   invertedTextColor: 'white',
   navColor: '#3996D0',
+  invertedNavColor: '#1c5476',
   textColor: 'black',
 };
 
@@ -25,6 +26,7 @@ const dark = {
   invertedBackgroundColor: '#eeeeee',
   invertedTextColor: 'black',
   navColor: '#1c5476',
+  invertedNavColor: '#3996D0',
   textColor: 'white',
 };
 

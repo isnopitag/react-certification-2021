@@ -1,19 +1,20 @@
 import React from 'react';
-// import { Redirect, Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom';
+import { LoginScreen } from '../components/myLogin/LoginScreen';
+import { YoutubeDetails } from '../components/videos/YoutubeDetails';
+import HomePage from '../pages/Home';
+
 
 export const VideoRoutes = () => {
   return (
     <>
-      {/* <div className="container mt-2">
-                <Switch>
-                    <Route exact path="/marvel" component={ MarvelScreen }/>
-                    <Route exact path="/hero/:heroeId" component={ HeroScreen }/>
-                    <Route exact path="/dc" component={ DcScreen }/>
-                    <Route exact path="/search" component={ SearchScreen }/>
-
-                    <Redirect to="/marvel"/>
-                </Switch>
-            </div>   */}
+      <div>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/details" component={YoutubeDetails} />
+          <Route exact path="/login" component={LoginScreen} />
+        </Switch>
+      </div>
     </>
   );
 };

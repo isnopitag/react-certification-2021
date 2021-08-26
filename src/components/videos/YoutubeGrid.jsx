@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { useFetchYoutbeVideos } from '../../hooks/useFetchYoutubeVideos';
 import { YoutubeCard } from './YoutubeCard';
-import { YoutubeDetails } from './YoutubeDetails';
 import { AppContext } from '../../context/context';
 
 const Grid = styled.div`
@@ -20,15 +19,16 @@ const Grid = styled.div`
 `;
 
 export const YoutubeGrid = () => {
-  const { view, search } = useContext(AppContext);
-  const [item, setItem] = useState({});
+  const { search } = useContext(AppContext);
+  const [setItem] = useState({});
 
   const { data: items, loading } = useFetchYoutbeVideos(search);
-  // const items = []
-  // const loading = true
+  // const items = [];
+  // const loading = true;
 
-  if (!view) {
-    return (
+  return (
+    <div>
+      <h3>WizelineTube</h3>
       <Grid id="youtube-grid" data-testid="YoutubeGrid">
         {loading && <h4>LOADING...</h4>}
         {items.map((itemVideo) => {
@@ -44,19 +44,19 @@ export const YoutubeGrid = () => {
           );
         })}
       </Grid>
-    );
-  }
-
-  return (
-    <YoutubeDetails
-      data-testid="YoutubeDetails"
-      id={item.id.videoId}
-      item={item.item}
-      // setView={setView}
-      setItem={setItem}
-    />
+    </div>
   );
 };
+
+// return (
+//   <YoutubeDetails
+//     data-testid="YoutubeDetails"
+//     id={item.id.videoId}
+//     item={item.item}
+//     // setView={setView}
+//     setItem={setItem}
+//   />
+// );
 
 // YoutubeGrid.propTypes = {
 //   search: PropTypes.string.isRequired,

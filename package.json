@@ -45,6 +45,14 @@
     "react-app-rewired": "^2.1.8",
     "react-test-renderer": "^16.14.0"
   },
+  "plugins": [
+    [
+      "babel-plugin-styled-components",
+      {
+        "displayName": false
+      }
+    ]
+  ],
   "browserslist": {
     "production": [
       ">0.2%",

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import { AppContext } from '../../context/context';
 
@@ -45,20 +46,26 @@ color: ${(props) => props.theme.textColor};
 }
 `;
 
-export const YoutubeCard = ({ item, id, loading, setItem }) => {
+export const YoutubeCard = ({ item, id, type = false, loading }) => {
   const { title, description, thumbnails } = item;
   const { dispatch } = useContext(AppContext);
+  const history = useHistory();
 
   const handleClick = () => {
+    console.log('TYPE', type);
     if (!loading) {
       dispatch({
-        type: 'setView',
-        value: true,
+        type: 'setItem',
+        value: {
+          id,
+          item,
+        },
       });
-      setItem({
-        id,
-        item,
-      });
+      if (type) {
+        history.replace('/favorites/details');
+      } else {
+        history.replace('/details');
+      }
     }
   };
   return (

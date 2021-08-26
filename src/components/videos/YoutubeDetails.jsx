@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import { YoutubeCard } from './YoutubeCard';
 import { YoutubeVideoPlayer } from './YoutubeVideoPlayer';
 import { useFetchYoutbeRelatedVideos } from '../../hooks/useFetchYoutubeRelatedVideos';
 import { AppContext } from '../../context/context';
+import { useHistory } from 'react-router';
+import { AuthContext } from '../../auth/AuthContext';
+import { types } from '../../types/types';
 
 const Wrapper = styled.div`
   display: grid;
@@ -16,14 +18,14 @@ const Box1 = styled.div`
   grid-column: 1/3;
   grid-row: 1/3;
 `;
-const ReturnBtn = styled.button`
-  margin-top: -3px;
+const ActionButton = styled.button`
+  margin: 4px 2px;
   position: relative;
   overflow: hidden;
   -webkit-transition: background 400ms;
   transition: background 400ms;
   color: #fff;
-  background-color: #1c5476;
+  background-color: ${(props) => props.color || '#fff'};
   padding: 0.5em 0.5rem;
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
@@ -33,49 +35,85 @@ const ReturnBtn = styled.button`
   cursor: pointer;
 `;
 
-export const YoutubeDetails = ({ id, item, setItem }) => {
-  const { dispatch } = useContext(AppContext);
-  const { data: items, loading } = useFetchYoutbeRelatedVideos(id);
+export const YoutubeDetails = () => {
+  const { item, setItem } = useContext(AppContext);
+  const { logged, authDispatch } = useContext(AuthContext);
+  const { data: items, loading } = useFetchYoutbeRelatedVideos(item.id.videoId);
+  const [message, setMessage] = useState(false);
+  const history = useHistory();
+
+  useEffect(() => {
+    if (item.id.videoId === 'true') {
+      history.replace('/');
+    }
+  }, [item,history]);
 
   const handleClick = () => {
-    dispatch({
-      type: 'setView',
-      value: false,
+    history.replace('/');
+  };
+
+  const handleAddToFavorites = () => {
+    setMessage(true);
+    setTimeout(() => {
+      setMessage(false);
+    }, 3000);
+    authDispatch({
+      type: types.addFavorites,
+      value: {
+        id: item.id.videoId,
+        item: item.item,
+      },
     });
   };
   return (
     <>
-      <Wrapper>
+      <Wrapper id="wrapper1">
         {loading && 'LOADING...'}
-        <Box1>
-          <ReturnBtn onClick={handleClick} type="button" data-testid="button">
+        <Box1 id="box1">
+          <ActionButton
+            id="button-details"
+            onClick={handleClick}
+            type="button"
+            data-testid="button"
+            color="#1c5476"
+          >
             <span>Return to main</span>
-          </ReturnBtn>
+          </ActionButton>
+          {logged && (
+            <ActionButton
+              id="button-details"
+              onClick={handleAddToFavorites}
+              type="button"
+              data-testid="button"
+              color="#04aa6d"
+            >
+              <span>Add to your Favorites</span>
+            </ActionButton>
+          )}
+          {message && <h4>Added to your favorites...</h4>}
         </Box1>
         <div>
-          <YoutubeVideoPlayer id={id} item={item} />
+          <YoutubeVideoPlayer id={item.id.videoId} item={item.item} />
         </div>
         <div>
           {items.map((itemVideo) => {
-            console.log(itemVideo);
+            // console.log(itemVideo);
             const { etag, snippet, id: idVideo } = itemVideo;
-            return (
-              <YoutubeCard
-                key={etag}
-                id={idVideo}
-                item={snippet}
-                loading={loading}
-                setItem={setItem}
-              />
-            );
+            if (snippet !== undefined) {
+              return (
+                <YoutubeCard
+                  key={etag}
+                  id={idVideo}
+                  item={snippet}
+                  loading={loading}
+                  setItem={setItem}
+                />
+              );
+            }
+            return <div></div>
           })}
         </div>
       </Wrapper>
     </>
   );
-};
-
-YoutubeDetails.propTypes = {
-  id: PropTypes.string.isRequired,
-  setItem: PropTypes.func.isRequired,
 };

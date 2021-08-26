@@ -6,6 +6,10 @@ export const initialState = {
     : theme[JSON.parse(localStorage.getItem('theme'))],
   search: 'wizeline',
   view: false,
+  item: {
+    id: { videoId: 'true'},
+    item: {},
+  }
 };
 
 export function reducer(state, action) {
@@ -14,6 +18,8 @@ export function reducer(state, action) {
       return { ...state, search: action.value, view: false };
     case 'setView':
       return { ...state, view: action.value };
+      case 'setItem':
+        return { ...state, item: action.value };
     case 'setTheme':
       return { ...state, currentTheme: action.value };
     case 'updateTheme':

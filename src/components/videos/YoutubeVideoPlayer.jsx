@@ -26,8 +26,8 @@ export const YoutubeVideoPlayer = ({ id, item }) => {
   const { title, description } = item;
 
   return (
-    <Wrapper>
-      <Box2>
+    <Wrapper id="wrapper-player">
+      <Box2 id="box2-player">
         <iframe
           title={title}
           id="player"
@@ -38,7 +38,7 @@ export const YoutubeVideoPlayer = ({ id, item }) => {
           frameBorder="0"
         />
       </Box2>
-      <Box3>
+      <Box3 id="box3-player">
         <h3>{title}</h3>
         <p>{description}</p>
       </Box3>

@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import { ReactComponent as Magnify } from '../../../assets/magnify.svg';
 import { AppContext } from '../../../context/context';
@@ -41,11 +42,11 @@ const SearchInput = styled.input`
     color: ${(props) => props.theme.invertedTextColor};
   }
 `;
-
 export const SearchBar = () => {
   const { dispatch } = useContext(AppContext);
   const [inputValue, setInputValue] = useState('');
 
+  const history = useHistory();
   const handeInputChange = (e) => {
     setInputValue(e.target.value);
   };
@@ -58,6 +59,7 @@ export const SearchBar = () => {
         value: inputValue,
       });
       setInputValue('');
+      history.replace('/')
     }
   };
 
