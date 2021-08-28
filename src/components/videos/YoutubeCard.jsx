@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
+import { AppContext } from '../../context/context';
 
 const Card = styled.div`
+  background: ${(props) => props.theme.cardBackground};
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   min-height: 80px;
+  max-width: 500px;
   margin: 0.25em 0.5em;
   overflow: hidden;
   padding: 2px 16px;
@@ -25,12 +29,14 @@ const CardBody = styled.div`
   flex: 1;
 `;
 const CardTitle = styled.p`
+  color: ${(props) => props.theme.textColor};
   fontweight: '700';
   fontsize: 16;
 `;
 CardTitle.displayName = 'cardTitle';
 
 const CardText = styled.p`
+color: ${(props) => props.theme.textColor};
   fontweight: '800';
   overflow: hidden;
    text-overflow: ellipsis;
@@ -40,22 +46,34 @@ const CardText = styled.p`
 }
 `;
 
-export const YoutubeCard = ({ item, id, setView, setItem }) => {
+export const YoutubeCard = ({ item, id, type = false, loading }) => {
   const { title, description, thumbnails } = item;
+  const { dispatch } = useContext(AppContext);
+  const history = useHistory();
 
   const handleClick = () => {
-    setView(true);
-    setItem({
-      id,
-      item,
-    });
+    console.log('TYPE', type);
+    if (!loading) {
+      dispatch({
+        type: 'setItem',
+        value: {
+          id,
+          item,
+        },
+      });
+      if (type) {
+        history.replace('/favorites/details');
+      } else {
+        history.replace('/details');
+      }
+    }
   };
   return (
     <Card id="card" onClick={handleClick}>
-      <CardImage id="cardImage" src={thumbnails.medium.url} />
+      <CardImage id="cardImage" src={thumbnails?.medium?.url} alt="thumbnail" />
       <CardBody id="CardBody">
-        <CardTitle id="cardTitle">{title}</CardTitle>
-        <CardText id="cadText">{description}</CardText>
+        <CardTitle data-testid="title" id="cardTitle">{title}</CardTitle>
+        <CardText data-testid="description" id="cadText">{description}</CardText>
       </CardBody>
     </Card>
   );

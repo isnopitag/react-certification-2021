@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { backgroundColorText } from '../Colors';
+import { AppContext } from '../../../context/context';
 
 const ThemeSwitch = styled.div`
-    color: #ffffff;
+    color: white;
     cursor: pointer;
     display: grid;
-    fill: ${backgroundColorText};
+    fill:  ${(props) => props.theme.backgroundColor};
     font-size: 0.9rem;
     height: 50px;
     grid-template-columns: 100px 100px;
@@ -23,8 +23,9 @@ const ThemeSwitch = styled.div`
     }
 
     h4{
-        left: 50%;
-        top: 50%;
+      color:${(props) => props.theme.invertedbackgroundColor} !important;
+      left: 50%;
+      top: 50%;
     }
   `;
 
@@ -41,7 +42,7 @@ const Switch = styled.label`
     width: 0;
   }
   span {
-    background-color: #113449;
+    background-color: ${(props) => props.theme.invertedBackgroundColor};
     border-radius: 34px;
     bottom: 0;
     cursor: pointer;
@@ -54,7 +55,7 @@ const Switch = styled.label`
   }
 
   span:before {
-    background-color: white;
+    background-color: ${(props) => props.theme.backgroundColor};
     border-radius: 50%;
     bottom: 4px;
     content: '';
@@ -67,11 +68,11 @@ const Switch = styled.label`
   }
 
   input:checked + span {
-    background-color: #113449;
+    background-color: ${(props) => props.theme.invertedBackgroundColor};
   }
 
   input:focus + span {
-    box-shadow: 0 0 1px #113449;
+    box-shadow: 0 0 1px ${(props) => props.theme.invertedBackgroundColor};
   }
 
   input:checked + span:before {
@@ -82,14 +83,20 @@ const Switch = styled.label`
 `;
 
 export const ThemeSwitcher = () => {
+  const { currentTheme, dispatch } = useContext(AppContext);
+
+  const toggleTheme = () => {
+    dispatch({ type: 'toggleTheme' });
+  };
+
   return (
     <>
       <ThemeSwitch id="themeSwithc">
         <Switch id="swithc">
-          <input type="checkbox" />
+          <input type="checkbox" onClick={toggleTheme} />
           <span />
         </Switch>
-        <h4>Dark Mode</h4>
+        <h4>{currentTheme.id}</h4>
       </ThemeSwitch>
     </>
   );
