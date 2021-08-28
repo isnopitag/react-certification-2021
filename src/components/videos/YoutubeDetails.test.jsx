@@ -1,29 +1,62 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { getByTestId, render } from '@testing-library/react';
 import { YoutubeDetails } from './YoutubeDetails';
+import { AppContext } from '../../context/context';
+import { AuthContext } from '../../auth/AuthContext';
 
-test('Renders Loading text before fetching data', () => {
-  const id = 'nmXMgqjQzls';
-  const item = {
-    title: 'TEST',
-    description: 'Description Test',
+const fakeData = {
+  id: '123',
+  name: 'Fake Name',
+  avatarUrl: 'url',
+  logged: true,
+  item: {
+    item: {
+      title: 'TEST',
+      description: 'Description Test',
+    },
+    id: { videoId: 'nmXMgqjQzls' },
+  },
+};
+const distpatchMock = jest.fn();
+const stateMock = { ...fakeData };
+const stateMockAuth = { ...fakeData };
+
+const build = () => {
+  const { container } = render(
+    <AuthContext.Provider value={{ ...stateMockAuth, distpatchMock }}>
+      <AppContext.Provider value={{ ...stateMock, distpatchMock }}>
+        <YoutubeDetails />
+      </AppContext.Provider>
+    </AuthContext.Provider>
+  );
+  return {
+    container,
+    loadingValue: () => getByTestId(container, 'loading-value'),
+    returnBtn: () => getByTestId(container, 'button-return'),
+    returnFav: () => getByTestId(container, 'button-fav'),
   };
-  const funcs = () => {};
-  render(<YoutubeDetails id={id} item={item} setView={funcs} setItem={funcs} />);
-  const loading = screen.getByText(/LOADING/i);
+};
 
-  expect(loading).toBeInTheDocument();
-});
+describe('YoutubeDetails', () => {
 
-test('Renders returns button ', () => {
-  const id = 'nmXMgqjQzls';
-  const item = {
-    title: 'TEST',
-    description: 'Description Test',
-  };
-  const funcs = () => {};
-  render(<YoutubeDetails id={id} item={item} setView={funcs} setItem={funcs} />);
-  const button = screen.getByTestId('button');
+  it('renders',() => {
+    build();
+  })
 
-  expect(button).toBeInTheDocument();
-});
+  it('Renders Loading text before fetching data', () => {
+    const { loadingValue } = build();
+      expect(loadingValue()).toBeDefined()
+      expect(loadingValue()).toHaveTextContent('LOADING...')
+  });
+
+  it('Renders return to main button', () =>{
+    const { returnBtn } = build();
+      expect(returnBtn()).toBeDefined()
+  })
+
+  it('Renders favorites button', () =>{
+    const { returnFav } = build();
+      expect(returnFav()).toBeDefined()
+  })
+})
+

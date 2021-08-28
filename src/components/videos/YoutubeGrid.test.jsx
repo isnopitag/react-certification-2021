@@ -1,12 +1,33 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { AppContext } from '../../context/context';
+import { AuthContext } from '../../auth/AuthContext';
 import { YoutubeGrid } from './YoutubeGrid';
 
-test('Renders Loading text before fetching data', () => {
-  const search = 'Wizeline';
-  const view = false;
-  const setView = () => {};
-  render(<YoutubeGrid search={search} view={view} setView={setView} />);
-  const loading = screen.getByText(/LOADING/i);
-  expect(loading).toBeInTheDocument();
-});
+const fakeData = {
+  search: 'Wizeline'
+};
+const distpatchMock = jest.fn();
+const stateMock = { ...fakeData };
+const stateMockAuth = { ...fakeData };
+
+const build = () => {
+  const { container } = render(
+    <AuthContext.Provider value={{ ...stateMockAuth, distpatchMock }}>
+      <AppContext.Provider value={{ ...stateMock, distpatchMock }}>
+        <YoutubeGrid />
+      </AppContext.Provider>
+    </AuthContext.Provider>
+  );
+  return {
+    container
+  };
+};
+
+
+describe('Youtube Grid ', () =>{
+
+  it('renders', () => {
+    build()
+  })
+})

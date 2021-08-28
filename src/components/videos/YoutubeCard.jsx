@@ -70,10 +70,10 @@ export const YoutubeCard = ({ item, id, type = false, loading }) => {
   };
   return (
     <Card id="card" onClick={handleClick}>
-      <CardImage id="cardImage" src={thumbnails.medium.url} />
+      <CardImage id="cardImage" src={thumbnails?.medium?.url} alt="thumbnail" />
       <CardBody id="CardBody">
-        <CardTitle id="cardTitle">{title}</CardTitle>
-        <CardText id="cadText">{description}</CardText>
+        <CardTitle data-testid="title" id="cardTitle">{title}</CardTitle>
+        <CardText data-testid="description" id="cadText">{description}</CardText>
       </CardBody>
     </Card>
   );

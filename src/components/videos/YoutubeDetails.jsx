@@ -68,13 +68,13 @@ export const YoutubeDetails = () => {
   return (
     <>
       <Wrapper id="wrapper1">
-        {loading && 'LOADING...'}
+        {loading && <h1 data-testid="loading-value">LOADING...</h1>}
         <Box1 id="box1">
           <ActionButton
             id="button-details"
             onClick={handleClick}
             type="button"
-            data-testid="button"
+            data-testid="button-return"
             color="#1c5476"
           >
             <span>Return to main</span>
@@ -84,7 +84,7 @@ export const YoutubeDetails = () => {
               id="button-details"
               onClick={handleAddToFavorites}
               type="button"
-              data-testid="button"
+              data-testid="button-fav"
               color="#04aa6d"
             >
               <span>Add to your Favorites</span>

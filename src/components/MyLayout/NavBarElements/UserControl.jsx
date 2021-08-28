@@ -61,7 +61,7 @@ export const UserControl = () => {
   return (
     <>
       <Account id="AccountComponent">
-        {logged && <NameText id="name-title">Hi, {name}</NameText>}
+        {logged && <NameText data-testid="name-text" id="name-title">Hi, {name}</NameText>}
         {!logged && <AccountCircle id="acount" width="50px" height="50px" stroke="white" />}
         {logged && <Avatar id="avatar-logged" src={avatarUrl} alt={name} />}
         {logged && <Button id="button-userControl" onClick={redirectFavorites} color="#04aa6d">Favorites</Button>}
