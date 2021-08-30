@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getYoutubeVideos } from '../helpers/youtubeService';
+import { debounce } from '../utils/debounce';
 
 export const useFetchYoutbeVideos = (query) => {
   const [state, setState] = useState({
@@ -7,12 +8,15 @@ export const useFetchYoutbeVideos = (query) => {
     loading: true,
   });
   useEffect(() => {
-    getYoutubeVideos(query).then((res) => {
-      setState({
-        data: res.data.items,
-        loading: false,
-      });
-    });
+    debounce(
+      getYoutubeVideos(query).then((res) => {
+        setState({
+          data: res.data.items,
+          loading: false,
+        });
+      }),
+      400
+    );
   }, [query]);
 
   return state;

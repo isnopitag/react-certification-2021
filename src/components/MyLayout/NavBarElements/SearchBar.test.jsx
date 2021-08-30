@@ -1,23 +1,57 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { getByTestId,render } from '@testing-library/react';
 import { SearchBar } from './SearchBar';
-import "@testing-library/jest-dom/extend-expect"
+import '@testing-library/jest-dom/extend-expect';
+import 'jest-styled-components';
+import { ThemeProvider } from 'styled-components';
+import { AppContext } from '../../../context/context';
 
+const fakeData = {
+  search: 'Wizeline',
+  currentTheme: {theme:'dark'}
+};
+const distpatchMock = jest.fn();
+const stateMockAuth = { ...fakeData };
 
-test("SearchBar initially has a lenght of 0", () => {
-    const fakeFunc = () => {};
-    const { getByTestId } = render (<SearchBar setSearch={fakeFunc} setView={fakeFunc}/>);
-    const searchBarEl = getByTestId("searchInput");
-    
+const build = () => {
+  const { container } = render(
+    <ThemeProvider id="themeProvier" theme={fakeData.currentTheme}>
+        <AppContext.Provider value={{ ...stateMockAuth, distpatchMock }}>
+          <SearchBar />
+        </AppContext.Provider>
+      </ThemeProvider>
+  );
+  return {
+    container,
+    searchWrapper: () => getByTestId(container, 'searchWrapper'),
+    searchInput: () => getByTestId(container, 'searchInput'),
+  };
+};
+
+describe('SearchBar mounted', () => {
+  it('renders', () => {
+      build()
+  });
+
+  test('SearchBar initially has a lenght of 0', () => {
+    const { getByTestId } = render(
+      <AppContext.Provider value={{ ...stateMockAuth, distpatchMock }}>
+        <SearchBar />
+      </AppContext.Provider>
+    );
+    const searchBarEl = getByTestId('searchInput');
+
     expect(searchBarEl.textContent.length).toBe(0);
+  });
 
-})
-
-test("SearchBar initially has a default placeholder", () => {
-    const fakeFunc = () => {};
-    const { getByPlaceholderText } = render (<SearchBar setSearch={fakeFunc} setView={fakeFunc}/>);
+  test('SearchBar initially has a default placeholder', () => {
+    const { getByPlaceholderText } = render(
+      <AppContext.Provider value={{ ...stateMockAuth, distpatchMock }}>
+        <SearchBar />
+      </AppContext.Provider>
+    );
     const searchBarPlaceHolder = getByPlaceholderText('Search...');
-    
-    expect(searchBarPlaceHolder.placeholder).toBe('Search...');
 
-})
+    expect(searchBarPlaceHolder.placeholder).toBe('Search...');
+  });
+});

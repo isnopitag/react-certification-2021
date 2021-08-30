@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { backgroundColorText } from '../Colors';
 
 const HamburgerBtn = styled.div`
   cursor: pointer;
@@ -8,7 +7,7 @@ const HamburgerBtn = styled.div`
   flex-direction: column;
   padding-right: 50px;
   span {
-    background: ${backgroundColorText};
+    background: ${(props) => props.theme.invertedBackgroundColor};
     border-radius: 5px;
     height: 2px;
     margin-bottom: 4px;
