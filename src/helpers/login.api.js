@@ -5,7 +5,6 @@ const mockedUser = {
   };
   
   export default async function loginApi(username, password) {
-      console.log(username,password)
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         // if (username === 'wizeline' && password === 'Rocks!') {

@@ -100,7 +100,7 @@ export const LoginScreen = ({ history }) => {
         history.replace('/');
       })
       .catch((error) => {
-        console.log('Error', error);
+        // console.log('Error', error);
         setShowError(true);
       });
     reset();
@@ -110,11 +110,12 @@ export const LoginScreen = ({ history }) => {
     <LoginWrapper id="login-wrapper">
       <Form id="login-form" autoComplete="off" onSubmit={handleLogin}>
         {showError && (
-          <H1Error id="title-error">Error: Please enter correct Username &amp; password.</H1Error>
+          <H1Error data-testid="error-message" id="title-error">Error: Please enter correct Username &amp; password.</H1Error>
         )}
         <H1 id="title-login">Login</H1>
         <input
           placeholder="Username"
+          data-testid="login-username"
           type="text"
           id="username"
           name="user"
@@ -123,13 +124,14 @@ export const LoginScreen = ({ history }) => {
         ></input>
         <input
           placeholder="Password"
+          data-testid="login-password"
           type="password"
           id="password"
           name="password"
           value={password}
           onChange={handleInputChange}
         ></input>
-        <button id="submit" type="submit">
+        <button id="submit" data-testid="login-button" type="submit">
           Login
         </button>
         <button id="returnToMain" type="button" onClick={handleReturn}>

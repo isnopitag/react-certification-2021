@@ -1,20 +1,24 @@
 import { useState, useEffect } from 'react';
 import { getYoutubeRealatedVideos } from '../helpers/youtubeService';
+import { debounce } from '../utils/debounce';
 
 export const useFetchYoutbeRelatedVideos = (id) => {
   const [state, setState] = useState({
     data: [],
     loading: true,
   });
+
   useEffect(() => {
     if (id !== 'true') {
-      getYoutubeRealatedVideos(id).then((res) => {
-        console.log('RES', res.data);
-        setState({
-          data: res.data.items,
-          loading: false,
-        });
-      });
+      debounce(
+        getYoutubeRealatedVideos(id).then((res) => {
+          setState({
+            data: res.data.items,
+            loading: false,
+          });
+        }),
+        400
+      );
     }
   }, [id]);
 

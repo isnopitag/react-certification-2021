@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 
 
 export const PrivateRoute = ({logged, component: Component, ...rest}) => {
-    console.log("logged", logged)
-    console.log("Component", Component)
     return (
         <Route {...rest}
             component={(props) => (

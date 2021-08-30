@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { ReactComponent as Magnify } from '../../../assets/magnify.svg';
 import { AppContext } from '../../../context/context';
 
+
 const SearchWrapper = styled.form`
   background: ${(props) => props.theme.backgroundColorAlfa};
   border: none;

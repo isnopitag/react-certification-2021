@@ -52,7 +52,6 @@ export const YoutubeCard = ({ item, id, type = false, loading }) => {
   const history = useHistory();
 
   const handleClick = () => {
-    console.log('TYPE', type);
     if (!loading) {
       dispatch({
         type: 'setItem',
